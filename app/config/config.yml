@@ -33,6 +33,7 @@ framework:
     assets: ~
     php_errors:
         log: true
+    serializer: true
 
 # Twig Configuration
 twig:
@@ -76,3 +77,15 @@ fos_user:
     from_email:
         address: '%from_email_address%'
         sender_name: '%from_email_name%'
+
+
+fos_oauth_server:
+    db_driver: orm       # Drivers available: orm, mongodb, or propel
+    client_class:        AppBundle\Entity\Client
+    access_token_class:  AppBundle\Entity\AccessToken
+    refresh_token_class: AppBundle\Entity\RefreshToken
+    auth_code_class:     AppBundle\Entity\AuthCode
+    service:
+        user_provider: fos_user.user_provider.username
+        options:
+            supported_scopes: read
